@@ -1,0 +1,55 @@
+name: Unstable Nightly Build
+
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*" # We don't want this to run on release
+  pull_request:
+
+jobs:
+  build-macos:
+    name: macOS
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          brew install cmake boost qt@5
+
+      - name: Clone BMoreCoin
+        run: |
+          rm -rf cryptonote
+          git clone https://github.com/bmoretoken/bmorecoin.git cryptonote
+          chmod +x ./.github/checkout.sh
+          ./.github/checkout.sh
+
+      - name: Build
+        id: build
+        run: |
+          export PATH="/usr/local/opt/qt@5/bin:$PATH"
+          build_folder="build/release"
+          ccx_version=${GITHUB_SHA::7}
+          release_name="ccx-desktop-macOS-dev-$ccx_version"
+          app_name="bmorecoin.app"
+
+          make -j3 build-release VERBOSE=1
+          cd "$build_folder"
+          macdeployqt "$app_name"
+          cpack
+          mkdir "$release_name"
+          mv *.dmg "$release_name".dmg
+          mv "$release_name".dmg "$release_name"
+
+          echo "::set-output name=release_name::${release_name}"
+          echo "::set-output name=artifact_path::$build_folder/$release_name"
+
+      - name: Upload To GH Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.build.outputs.release_name }}
+          path: ${{ steps.build.outputs.artifact_path }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
