@@ -1,0 +1,11 @@
+[Unit]
+Description=Stop bmorecoind container on shutdown
+DefaultDependencies=no
+After=final.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/ubuntu/docker_stop.sh
+
+[Install]
+WantedBy=final.target

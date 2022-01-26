@@ -1,0 +1,10 @@
+[Unit]
+Description=Start the bmorecoind container
+
+[Service]
+ExecStart=/home/ubuntu/bmorecoin/docker_start.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
