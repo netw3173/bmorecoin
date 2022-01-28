@@ -1,3 +1,8 @@
+# Tokenomics
+* Max Block Number 500,000,000.
+* Total number of available coins 18,446,744,073,709,551,616.
+* Difficulty Target is 60 Seconds.
+
 # Software
 * https://github.com/BMoreToken/bmorecoin/releases
 * [![Ubuntu 18.04](https://github.com/BMoreToken/bmorecoin/actions/workflows/ubuntu18.yml/badge.svg)](https://github.com/BMoreToken/bmorecoin/actions/workflows/ubuntu18.yml)
