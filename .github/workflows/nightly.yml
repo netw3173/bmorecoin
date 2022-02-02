@@ -95,9 +95,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  build-ubuntu20:
-    name: Ubuntu 20.04
-    runs-on: ubuntu-20.04
+  build-ubuntu:
+    name: Ubuntu Latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
 
