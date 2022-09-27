@@ -76,7 +76,7 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 //TODO Put here the name of your currency
 const char     CRYPTONOTE_NAME[]                             = "pitcoin";
 //const char     GENESIS_COINBASE_TX_HEX[]                     = "";
-const char GENESIS_COINBASE_TX_HEX[] = "";
+const char GENESIS_COINBASE_TX_HEX[] = "013c01ff0001fdcae7e5ff01029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101b53a0e4bdfa78f6c071136a42af8b9603880326492d4f4e2f6bfeb3a87837596";
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
 const uint8_t  BLOCK_MAJOR_VERSION_1                         =  1;
