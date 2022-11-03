@@ -54,6 +54,8 @@
 ## Working
 * sudo apt update
 * sudo apt -y upgrade
+*  sudo apt-get update && sudo apt-get install build-essential
+* sudo apt-get install libboost-all-dev
 * sudo snap install docker
 ## Trying
 * git clone https://github.com/BMoreToken/bmorecoin.git ~/bmorecoin; cd ~/bmorecoin; docker build .
